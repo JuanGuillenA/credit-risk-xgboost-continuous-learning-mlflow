@@ -10,6 +10,15 @@ Results show stable and reproducible predictive performance across retraining cy
 
 ---
 
+## Technologies and Tools (Stack)
+
+- **Machine Learning & Data Science:** Python, Pandas, NumPy, Scikit-learn, XGBoost  
+- **Experiment Tracking:** MLflow (runs, metrics, artifacts, model versioning)  
+- **Backend:** FastAPI, Uvicorn  
+- **Visualization:** Matplotlib (confusion matrix, ROC, PR curve, probability histograms)
+
+---
+
 ## System Interface
 
 The application provides a web interface to evaluate credit applications and later register real payment outcomes used for retraining.
