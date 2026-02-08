@@ -10,7 +10,7 @@ Credit risk assessment is a critical task in financial decision-making, where in
 
 The application provides a web interface to evaluate credit applications and later register real payment outcomes used for retraining.
 
-![App UI](artifacts/figures/app_fuction.png)
+![App UI](german-credit-continuous-training-mlflow/artifacts/figures/app_fuction.png)
 
 ---
 
@@ -66,7 +66,7 @@ Main phases:
 
 (Generate with the PlantUML code provided and export as image)
 
-![Proposed Method Diagram](artifacts/figures/diagrama_ui.png)
+![Proposed Method Diagram](german-credit-continuous-training-mlflow/artifacts/figures/diagrama_ui.png)
 
 ---
 
@@ -130,7 +130,7 @@ This indicates moderate discrimination with recall-oriented behavior — useful 
 
 ## Confusion Matrix
 
-![Confusion Matrix](artifacts/figures/v_20260204_204053_confusion_matrix.png)
+![Confusion Matrix](german-credit-continuous-training-mlflow/artifacts/figures/v_20260204_204053_confusion_matrix.png)
 
 Model shows stronger detection of Paid class with some false positives — threshold tuning can improve balance.
 
@@ -138,7 +138,7 @@ Model shows stronger detection of Paid class with some false positives — thres
 
 ## Precision-Recall Curve
 
-![PR Curve](artifacts/figures/v_20260204_204053_pr_curve.png)
+![PR Curve](german-credit-continuous-training-mlflow/artifacts/figures/v_20260204_204053_pr_curve.png)
 
 Demonstrates stable precision at mid-recall ranges with expected decay near full recall.
 
@@ -146,7 +146,7 @@ Demonstrates stable precision at mid-recall ranges with expected decay near full
 
 ## ROC Curve
 
-![ROC Curve](artifacts/figures/v_20260204_204053_roc_curve.png)
+![ROC Curve](german-credit-continuous-training-mlflow/artifacts/figures/v_20260204_204053_roc_curve.png)
 
 AUC ≈ **0.66**, above random baseline and consistent across retraining cycles.
 
@@ -154,7 +154,7 @@ AUC ≈ **0.66**, above random baseline and consistent across retraining cycles.
 
 ## Probability Distribution
 
-![Probability Histogram](artifacts/figures/v_20260204_204053_proba_hist.png)
+![Probability Histogram](german-credit-continuous-training-mlflow/artifacts/figures/v_20260204_204053_proba_hist.png)
 
 Shows separation behavior of predicted probabilities for repayment likelihood.
 
@@ -280,7 +280,7 @@ Juan Guillen
 juanito.albertog6@gmail.com
 
 Ariel Solano
-
+arisolri1@gmail.com
 
 
 
