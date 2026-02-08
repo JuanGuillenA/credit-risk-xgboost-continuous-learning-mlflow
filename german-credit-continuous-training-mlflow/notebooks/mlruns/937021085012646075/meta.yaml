@@ -1,0 +1,6 @@
+artifact_location: file:///Users/juanguillenalbarracin/Downloads/german-credit-continuous-training-mlflow/notebooks/mlruns/937021085012646075
+creation_time: 1769993572717
+experiment_id: '937021085012646075'
+last_update_time: 1769993572717
+lifecycle_stage: active
+name: CooperativeCreditRisk-XGBoost

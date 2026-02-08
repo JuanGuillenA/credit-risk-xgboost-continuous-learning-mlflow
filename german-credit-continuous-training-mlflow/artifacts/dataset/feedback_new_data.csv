@@ -1,0 +1,11 @@
+duration,credit_amount,age,checking_status,employment,savings_status,purpose,target
+18,1500.0,30,<0,unemployed,<100,car,1
+18,1500.0,30,<0,unemployed,<100,car,0
+24,5000.0,25,0<=X<200,<1,<100,domestic appliances,1
+12,2500.0,27,>=200,1<=X<4,100<=X<500,education,0
+12,2500.0,27,>=200,1<=X<4,100<=X<500,education,0
+12,1000.0,35,>=200,4<=X<7,100<=X<500,repairs,1
+36,3000.0,65,0<=X<200,unemployed,>=1000,vacation/others,1
+18,1500.0,30,<0,unemployed,<100,education,0
+18,1500.0,30,<0,unemployed,<100,education,1
+12,1800.0,25,0<=X<200,<1,no known savings,domestic appliances,0

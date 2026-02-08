@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Evaluación de Riesgo de Crédito</title>
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --card:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --accent:#1d4ed8;   /* azul banco */
+      --accent2:#0f172a;
+      --ok:#047857;
+      --bad:#b91c1c;
+      --shadow: 0 10px 25px rgba(0,0,0,.06);
+      --radius: 14px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:var(--font);
+    }
+    header{
+      border-bottom:1px solid var(--line);
+      background:#fff;
+    }
+    .wrap{
+      max-width:1100px;
+      margin:0 auto;
+      padding:20px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .logo{
+      width:42px;height:42px;border-radius:12px;
+      background:linear-gradient(135deg, var(--accent), #60a5fa);
+      box-shadow: var(--shadow);
+    }
+    h1{ font-size:20px; margin:0; }
+    .sub{ color:var(--muted); margin-top:2px; font-size:13px; }
+
+    main{ padding:22px 0 34px; }
+    .grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+    }
+    @media (max-width: 980px){
+      .grid{ grid-template-columns:1fr; }
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+    .card h2{
+      margin:0 0 10px;
+      font-size:16px;
+    }
+    .hint{
+      margin:0 0 14px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.4;
+    }
+    .row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    @media (max-width: 720px){
+      .row{ grid-template-columns:1fr; }
+    }
+    label{
+      display:block;
+      font-size:12px;
+      color:var(--muted);
+      margin:8px 0 6px;
+    }
+    input, select{
+      width:100%;
+      padding:10px 10px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      outline:none;
+      background:#fff;
+      color:var(--text);
+    }
+    input:focus, select:focus{ border-color:#93c5fd; box-shadow:0 0 0 3px rgba(59,130,246,.15); }
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:14px;
+      align-items:center;
+    }
+    button{
+      border:0;
+      border-radius: 12px;
+      padding:10px 14px;
+      cursor:pointer;
+      font-weight:600;
+    }
+    .primary{ background:var(--accent); color:#fff; }
+    .secondary{ background:#f3f4f6; color:var(--accent2); border:1px solid var(--line); }
+    .danger{ background:#fff; color:var(--bad); border:1px solid #fecaca; }
+    button:disabled{ opacity:.6; cursor:not-allowed; }
+
+    .result{
+      margin-top:12px;
+      border-top:1px solid var(--line);
+      padding-top:12px;
+      display:grid;
+      gap:10px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:12px;
+      border:1px solid var(--line);
+      background:#fff;
+      width:fit-content;
+    }
+    .pill.ok{ border-color:#bbf7d0; background:#ecfdf5; color:var(--ok); }
+    .pill.bad{ border-color:#fecaca; background:#fef2f2; color:var(--bad); }
+
+    .kpi{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
+    .kpi > div{
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:12px;
+      background:#fff;
+    }
+    .kpi .t{ font-size:12px; color:var(--muted); }
+    .kpi .v{ font-size:18px; font-weight:800; margin-top:4px; }
+
+    .note{
+      font-size:12px;
+      color:var(--muted);
+      line-height:1.35;
+    }
+    .foot{
+      margin-top:12px;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>Evaluación de Riesgo de Crédito</h1>
+          <div class="sub">Demostración</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="grid">
+      <!-- Evaluación -->
+      <section class="card">
+        <h2>1) Evaluar una solicitud</h2>
+        <p class="hint">
+          Ingrese un <b>ID del cliente</b> (por ejemplo: nombre o código interno) para que luego se pueda registrar el resultado real
+          <i>(pagó / no pagó)</i>. Este ID es solo para identificación dentro de la app.
+        </p>
+
+        <div class="row">
+          <div>
+            <label for="client_id">ID del cliente</label>
+            <input id="client_id" placeholder="Ej: Juan Guillen / Cliente-001" />
+          </div>
+          <div>
+            <label for="purpose">Motivo del crédito</label>
+            <select id="purpose">
+              <option value="car">Vehículo</option>
+              <option value="furniture/equipment">Muebles / Equipos</option>
+              <option value="radio/tv">Electrodomésticos</option>
+              <option value="business">Negocio</option>
+              <option value="education">Educación</option>
+              <option value="repairs">Reparaciones</option>
+              <option value="domestic appliances">Hogar</option>
+              <option value="vacation/others">Otros</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="credit_amount">Monto solicitado (USD)</label>
+            <input id="credit_amount" type="number" min="0" step="1" value="1500" />
+          </div>
+          <div>
+            <label for="duration">Plazo (meses)</label>
+            <input id="duration" type="number" min="1" max="72" step="1" value="18" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="age">Edad</label>
+            <input id="age" type="number" min="18" max="100" step="1" value="30" />
+          </div>
+          <div>
+            <label for="employment">Situación laboral</label>
+            <select id="employment">
+              <option value="unemployed">Sin empleo</option>
+              <option value="<1">Menos de 1 año</option>
+              <option value="1<=X<4">1 a 4 años</option>
+              <option value="4<=X<7">4 a 7 años</option>
+              <option value=">=7">Más de 7 años</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="checking_status">Estado de cuenta</label>
+            <select id="checking_status">
+              <option value="<0">Saldo negativo</option>
+              <option value="0<=X<200">Saldo entre 0 y 200</option>
+              <option value=">=200">Saldo mayor a 200</option>
+              <option value="no checking">Sin cuenta</option>
+            </select>
+          </div>
+          <div>
+            <label for="savings_status">Ahorros</label>
+            <select id="savings_status">
+              <option value="<100">Menos de 100</option>
+              <option value="100<=X<500">100 a 500</option>
+              <option value="500<=X<1000">500 a 1000</option>
+              <option value=">=1000">Más de 1000</option>
+              <option value="no known savings">No registra</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="primary" id="btnPredict">Evaluar</button>
+          <button class="secondary" id="btnClear">Limpiar</button>
+          <span class="note" id="predictNote"></span>
+        </div>
+
+        <div class="result" id="resultBox" style="display:none;">
+          <div id="decisionPill" class="pill">—</div>
+
+          <div class="kpi">
+            <div>
+              <div class="t">Probabilidad de que pague</div>
+              <div class="v" id="probaGood">—</div>
+            </div>
+            <div>
+              <div class="t">Modelo en uso</div>
+              <div class="v mono" id="modelVersion">—</div>
+            </div>
+          </div>
+
+          <p class="note">
+            * Esto es una <b>ayuda</b> para priorizar revisiones. La decisión final siempre la toma el área de crédito.
+          </p>
+        </div>
+      </section>
+
+      <!-- Registro de resultado real -->
+      <aside class="card">
+        <h2>2) Registrar resultado real</h2>
+        <p class="hint">
+          Cuando ya pasó un tiempo, registre si el cliente <b>pagó</b> o <b>no pagó</b>. Con esa información el sistema
+          puede mejorar en el siguiente reentrenamiento.
+        </p>
+
+        <label for="client_id_outcome">ID del cliente</label>
+        <input id="client_id_outcome" placeholder="El mismo ID usado en la evaluación" />
+
+        <label for="paid">Resultado real</label>
+        <select id="paid">
+          <option value="true">Pagó</option>
+          <option value="false">No pagó</option>
+        </select>
+
+        <div class="actions">
+          <button class="primary" id="btnOutcome">Guardar resultado</button>
+          <button class="danger" id="btnRetrain">Reentrenar modelo</button>
+        </div>
+
+        <div class="foot" id="outcomeMsg"></div>
+        <div class="foot" id="retrainMsg"></div>
+      </aside>
+    </div>
+  </main>
+
+<script>
+  function $(id){ return document.getElementById(id); }
+
+  function toNumber(v){
+    const n = Number(v);
+    return isFinite(n) ? n : null;
+  }
+
+  function setPill(decision){
+    const pill = $("decisionPill");
+    pill.classList.remove("ok","bad");
+    if(decision === "APROBADO"){
+      pill.classList.add("ok");
+      pill.textContent = "Recomendación: APROBADO";
+    }else if(decision === "RECHAZADO"){
+      pill.classList.add("bad");
+      pill.textContent = "Recomendación: RECHAZADO";
+    }else{
+      pill.textContent = "—";
+    }
+  }
+
+  $("btnClear").addEventListener("click", () => {
+    $("client_id").value = "";
+    $("credit_amount").value = 1500;
+    $("duration").value = 18;
+    $("age").value = 30;
+    $("resultBox").style.display = "none";
+    $("predictNote").textContent = "";
+  });
+
+  $("btnPredict").addEventListener("click", async () => {
+    $("predictNote").textContent = "";
+    const payload = {
+      client_id: $("client_id").value.trim() || null,
+      credit_amount: toNumber($("credit_amount").value),
+      duration: parseInt($("duration").value, 10),
+      age: parseInt($("age").value, 10),
+      checking_status: $("checking_status").value,
+      employment: $("employment").value,
+      savings_status: $("savings_status").value,
+      purpose: $("purpose").value
+    };
+
+    // Validación simple
+    if(payload.credit_amount === null || payload.credit_amount < 0){
+      $("predictNote").textContent = "Revise el monto solicitado.";
+      return;
+    }
+    if(!payload.duration || payload.duration < 1 || payload.duration > 72){
+      $("predictNote").textContent = "Revise el plazo (1 a 72 meses).";
+      return;
+    }
+    if(!payload.age || payload.age < 18 || payload.age > 100){
+      $("predictNote").textContent = "Revise la edad (18 a 100).";
+      return;
+    }
+
+    $("btnPredict").disabled = true;
+    try{
+      const res = await fetch("/predict", {
+        method:"POST",
+        headers:{ "Content-Type":"application/json" },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+      if(!res.ok){
+        throw new Error(data.detail || "No se pudo evaluar.");
+      }
+
+      setPill(data.decision);
+      $("probaGood").textContent = (data.proba_good * 100).toFixed(1) + "%";
+      $("modelVersion").textContent = data.model_version;
+      $("resultBox").style.display = "grid";
+
+      // Sugerencia: copiar el ID al formulario de resultado real
+      if(payload.client_id){
+        $("client_id_outcome").value = payload.client_id;
+      }
+    }catch(err){
+      $("predictNote").textContent = err.message;
+    }finally{
+      $("btnPredict").disabled = false;
+    }
+  });
+
+  $("btnOutcome").addEventListener("click", async () => {
+    $("outcomeMsg").textContent = "";
+    const clientId = $("client_id_outcome").value.trim();
+    if(!clientId){
+      $("outcomeMsg").textContent = "Ingrese el ID del cliente.";
+      return;
+    }
+    const payload = { client_id: clientId, paid: $("paid").value === "true" };
+
+    $("btnOutcome").disabled = true;
+    try{
+      const res = await fetch("/outcome", {
+        method:"POST",
+        headers:{ "Content-Type":"application/json" },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+      if(!res.ok){
+        throw new Error(data.detail || "No se pudo guardar el resultado.");
+      }
+      $("outcomeMsg").textContent = `Guardado. Total resultados reales: ${data.feedback_rows}`;
+    }catch(err){
+      $("outcomeMsg").textContent = "Error..." + err.message;
+    }finally{
+      $("btnOutcome").disabled = false;
+    }
+  });
+
+  $("btnRetrain").addEventListener("click", async () => {
+    $("retrainMsg").textContent = "";
+    $("btnRetrain").disabled = true;
+    try{
+      const res = await fetch("/retrain", { method:"POST" });
+      const data = await res.json();
+      if(!res.ok){
+        throw new Error(data.detail || "No se pudo reentrenar.");
+      }
+      $("retrainMsg").textContent = `Reentrenado. Nuevo modelo: ${data.new_version}`;
+    }catch(err){
+      $("retrainMsg").textContent = "Error..." + err.message;
+    }finally{
+      $("btnRetrain").disabled = false;
+    }
+  });
+</script>
+</body>
+</html>

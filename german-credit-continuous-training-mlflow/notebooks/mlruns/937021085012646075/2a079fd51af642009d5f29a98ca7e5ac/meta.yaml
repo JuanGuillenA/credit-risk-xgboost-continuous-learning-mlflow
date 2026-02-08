@@ -1,0 +1,16 @@
+artifact_uri: file:///Users/juanguillenalbarracin/Downloads/german-credit-continuous-training-mlflow/notebooks/mlruns/937021085012646075/2a079fd51af642009d5f29a98ca7e5ac/artifacts
+deleted_time: 1770237163499
+end_time: 1770236921123
+entry_point_name: ''
+experiment_id: '937021085012646075'
+lifecycle_stage: deleted
+run_id: 2a079fd51af642009d5f29a98ca7e5ac
+run_name: train_v1_base50
+run_uuid: 2a079fd51af642009d5f29a98ca7e5ac
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1770236920934
+status: 4
+tags: []
+user_id: juanguillenalbarracin

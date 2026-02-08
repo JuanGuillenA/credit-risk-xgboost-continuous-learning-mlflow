@@ -1,0 +1,38 @@
+{
+  "current_version": "v_20260204_204901",
+  "models": {
+    "v1": {
+      "path": "artifacts/models/model_v1.joblib",
+      "metrics_path": "artifacts/reports/metrics_v1.json"
+    },
+    "v_20260204_203029": {
+      "path": "artifacts/models/model_v_20260204_203029.joblib",
+      "metrics_path": "artifacts/reports/metrics_v_20260204_203029.json"
+    },
+    "v_20260204_203458": {
+      "path": "artifacts/models/model_v_20260204_203458.joblib",
+      "metrics_path": "artifacts/reports/metrics_v_20260204_203458.json"
+    },
+    "v_20260204_204053": {
+      "path": "artifacts/models/model_v_20260204_204053.joblib",
+      "metrics_path": "artifacts/reports/metrics_v_20260204_204053.json"
+    },
+    "v_20260204_204901": {
+      "path": "artifacts/models/model_v_20260204_204901.joblib",
+      "metrics_path": "artifacts/reports/metrics_v_20260204_204901.json"
+    }
+  },
+  "features_used": [
+    "duration",
+    "credit_amount",
+    "age",
+    "checking_status",
+    "employment",
+    "savings_status",
+    "purpose"
+  ],
+  "fixed_split": {
+    "random_state": 42,
+    "test_size": 0.25
+  }
+}
