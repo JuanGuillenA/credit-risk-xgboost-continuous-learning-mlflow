@@ -148,7 +148,7 @@ Demonstrates stable precision at mid-recall ranges with expected decay near full
 
 ![ROC Curve](german-credit-continuous-training-mlflow/artifacts/figures/v_20260204_204053_roc_curve.png)
 
-AUC ≈ **0.74**, above random baseline and consistent across retraining cycles.
+AUC ≈ **0.71**, above random baseline and consistent across retraining cycles.
 
 ---
 
@@ -274,7 +274,7 @@ This project delivers a full machine learning lifecycle solution for credit risk
 
 ---
 
-# Author
+# Authors
 
 Juan Guillen
 juanito.albertog6@gmail.com
