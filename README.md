@@ -10,6 +10,15 @@ Results show stable and reproducible predictive performance across retraining cy
 
 ---
 
+## Technologies and Tools (Stack)
+
+- **Machine Learning & Data Science:** Python, Pandas, NumPy, Scikit-learn, XGBoost  
+- **Experiment Tracking:** MLflow (runs, metrics, artifacts, model versioning)  
+- **Backend:** FastAPI, Uvicorn  
+- **Visualization:** Matplotlib (confusion matrix, ROC, PR curve, probability histograms)
+
+---
+
 ## System Interface
 
 The application provides a web interface to evaluate credit applications and later register real payment outcomes used for retraining.
@@ -41,7 +50,34 @@ Each training and retraining run logs parameters, metrics, curves, and model art
 
 ### Proposed Method Diagram
 
-![Proposed Method Diagram](german-credit-continuous-training-mlflow/artifacts/figures/diagrama_ui.png)
+```mermaid
+flowchart TD
+A[Load Dataset] --> B[EDA]
+B --> C[Preprocess Pipeline]
+C --> D[Train XGBoost]
+D --> E[Evaluate Model]
+E --> F[Log to MLflow]
+
+F --> G[Artifacts per Run]
+G --> G1[Confusion Matrix]
+G --> G2[ROC Curve + AUC]
+G --> G3[PR Curve]
+G --> G4[Probability Histogram]
+G --> G5[Metrics JSON/CSV]
+
+F --> H[Register Model Version]
+H --> I[FastAPI Serving]
+I --> J[UI Credit Form]
+J --> K[Predict Probability]
+
+K --> L[Collect Outcome]
+L --> M[Feedback Dataset]
+M --> N[Retrain Trigger]
+N --> O[Retrain + Re-evaluate]
+O --> P[Log New Run MLflow]
+P --> Q[Promote New Version]
+Q --> H
+```
 
 ### Table 1 — Model Parameters
 
