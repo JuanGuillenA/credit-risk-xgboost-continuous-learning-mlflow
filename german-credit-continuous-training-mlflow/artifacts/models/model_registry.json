@@ -1,5 +1,5 @@
 {
-  "current_version": "v_20260204_204901",
+  "current_version": "v_20260210_222529",
   "models": {
     "v1": {
       "path": "artifacts/models/model_v1.joblib",
@@ -20,6 +20,10 @@
     "v_20260204_204901": {
       "path": "artifacts/models/model_v_20260204_204901.joblib",
       "metrics_path": "artifacts/reports/metrics_v_20260204_204901.json"
+    },
+    "v_20260210_222529": {
+      "path": "artifacts/models/model_v_20260210_222529.joblib",
+      "metrics_path": "artifacts/reports/metrics_v_20260210_222529.json"
     }
   },
   "features_used": [

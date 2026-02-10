@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1770762337528
+current_stage: None
+description: null
+last_updated_timestamp: 1770762337528
+name: CooperativeCreditRisk-XGBoost
+run_id: 8972234aea0a407fabb88f75202cb239
+run_link: null
+source: file:///Users/juanguillenalbarracin/Downloads/german-credit-continuous-training-mlflow/notebooks/mlruns/937021085012646075/8972234aea0a407fabb88f75202cb239/artifacts/sklearn_model
+status: READY
+status_message: null
+storage_location: file:///Users/juanguillenalbarracin/Downloads/german-credit-continuous-training-mlflow/notebooks/mlruns/937021085012646075/8972234aea0a407fabb88f75202cb239/artifacts/sklearn_model
+user_id: null
+version: 5

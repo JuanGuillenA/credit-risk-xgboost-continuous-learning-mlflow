@@ -36,7 +36,6 @@ duration,credit_amount,age,checking_status,employment,savings_status,purpose,tar
 21.0,5003.0,29.0,no checking,1<=X<4,no known savings,new car,0
 12.0,2578.0,55.0,<0,unemployed,<100,furniture/equipment,1
 12.0,3399.0,37.0,>=200,>=7,no known savings,radio/tv,1
-12.0,2028.0,30.0,0<=X<200,1<=X<4,no known savings,used car,1
 30.0,4221.0,28.0,0<=X<200,1<=X<4,<100,business,1
 18.0,1149.0,46.0,no checking,1<=X<4,>=1000,radio/tv,1
 10.0,2848.0,32.0,no checking,1<=X<4,100<=X<500,used car,1
@@ -56,7 +55,6 @@ duration,credit_amount,age,checking_status,employment,savings_status,purpose,tar
 15.0,1444.0,23.0,0<=X<200,<1,no known savings,radio/tv,1
 21.0,1602.0,30.0,<0,>=7,<100,new car,1
 18.0,1950.0,34.0,no checking,4<=X<7,<100,business,1
-24.0,915.0,29.0,<0,>=7,no known savings,new car,0
 18.0,2404.0,26.0,no checking,1<=X<4,<100,radio/tv,1
 24.0,3757.0,62.0,no checking,>=7,<100,new car,1
 12.0,682.0,51.0,no checking,4<=X<7,100<=X<500,new car,1
@@ -65,7 +63,6 @@ duration,credit_amount,age,checking_status,employment,savings_status,purpose,tar
 36.0,11054.0,30.0,no checking,1<=X<4,no known savings,used car,1
 10.0,1309.0,27.0,no checking,1<=X<4,no known savings,new car,0
 21.0,5248.0,26.0,no checking,1<=X<4,no known savings,used car,1
-12.0,951.0,27.0,0<=X<200,<1,100<=X<500,furniture/equipment,0
 18.0,1880.0,32.0,<0,4<=X<7,<100,radio/tv,1
 18.0,3590.0,40.0,0<=X<200,unemployed,<100,business,1
 24.0,4736.0,25.0,0<=X<200,<1,<100,furniture/equipment,0
@@ -113,7 +110,6 @@ duration,credit_amount,age,checking_status,employment,savings_status,purpose,tar
 24.0,2028.0,30.0,no checking,4<=X<7,<100,furniture/equipment,1
 48.0,14421.0,25.0,0<=X<200,1<=X<4,<100,business,0
 36.0,2323.0,24.0,0<=X<200,4<=X<7,<100,radio/tv,1
-24.0,1193.0,29.0,<0,unemployed,<100,new car,0
 11.0,2142.0,28.0,no checking,>=7,>=1000,business,1
 24.0,2964.0,49.0,<0,>=7,no known savings,used car,1
 12.0,1386.0,26.0,no checking,1<=X<4,500<=X<1000,new car,0
@@ -149,7 +145,6 @@ duration,credit_amount,age,checking_status,employment,savings_status,purpose,tar
 36.0,2746.0,31.0,<0,>=7,<100,furniture/equipment,0
 12.0,1474.0,33.0,>=200,<1,<100,furniture/equipment,1
 48.0,3844.0,34.0,0<=X<200,4<=X<7,100<=X<500,business,0
-30.0,11998.0,34.0,<0,<1,<100,repairs,0
 10.0,1275.0,23.0,>=200,<1,<100,furniture/equipment,1
 24.0,947.0,38.0,>=200,4<=X<7,<100,new car,0
 48.0,3914.0,38.0,no checking,1<=X<4,no known savings,business,0
@@ -176,7 +171,6 @@ duration,credit_amount,age,checking_status,employment,savings_status,purpose,tar
 18.0,4594.0,32.0,no checking,<1,<100,radio/tv,1
 9.0,2030.0,24.0,0<=X<200,4<=X<7,no known savings,furniture/equipment,1
 24.0,1967.0,20.0,0<=X<200,>=7,<100,radio/tv,1
-6.0,931.0,32.0,0<=X<200,<1,100<=X<500,new car,0
 12.0,958.0,47.0,0<=X<200,4<=X<7,<100,new car,1
 28.0,4006.0,45.0,<0,1<=X<4,<100,new car,0
 12.0,1274.0,37.0,<0,<1,<100,new car,0
@@ -203,7 +197,6 @@ duration,credit_amount,age,checking_status,employment,savings_status,purpose,tar
 24.0,2603.0,28.0,no checking,1<=X<4,>=1000,used car,1
 21.0,1835.0,25.0,<0,1<=X<4,<100,radio/tv,0
 36.0,7127.0,23.0,no checking,<1,<100,furniture/equipment,0
-6.0,1449.0,31.0,0<=X<200,>=7,100<=X<500,business,1
 12.0,1680.0,35.0,<0,>=7,500<=X<1000,radio/tv,1
 12.0,2171.0,29.0,no checking,<1,<100,radio/tv,1
 12.0,836.0,23.0,0<=X<200,<1,100<=X<500,new car,0
@@ -248,12 +241,10 @@ duration,credit_amount,age,checking_status,employment,savings_status,purpose,tar
 12.0,902.0,21.0,<0,4<=X<7,<100,retraining,0
 24.0,1474.0,33.0,no checking,<1,100<=X<500,new car,1
 12.0,1101.0,27.0,no checking,1<=X<4,<100,new car,1
-20.0,6148.0,31.0,0<=X<200,>=7,100<=X<500,used car,1
 24.0,4042.0,43.0,no checking,4<=X<7,no known savings,used car,1
 6.0,448.0,23.0,<0,<1,<100,education,0
 24.0,1525.0,34.0,no checking,4<=X<7,>=1000,new car,1
 36.0,9566.0,31.0,no checking,1<=X<4,<100,radio/tv,1
-30.0,5954.0,38.0,no checking,4<=X<7,<100,radio/tv,1
 60.0,13756.0,63.0,no checking,>=7,no known savings,new car,1
 30.0,3077.0,40.0,no checking,>=7,no known savings,radio/tv,1
 24.0,3617.0,20.0,>=200,>=7,no known savings,furniture/equipment,1
@@ -279,7 +270,6 @@ duration,credit_amount,age,checking_status,employment,savings_status,purpose,tar
 18.0,6458.0,39.0,no checking,>=7,<100,new car,0
 42.0,7174.0,30.0,<0,4<=X<7,no known savings,radio/tv,0
 21.0,2993.0,28.0,no checking,1<=X<4,<100,used car,1
-27.0,2442.0,43.0,<0,>=7,<100,business,1
 15.0,1271.0,39.0,>=200,1<=X<4,no known savings,radio/tv,0
 60.0,6836.0,63.0,<0,>=7,<100,business,0
 24.0,2896.0,29.0,0<=X<200,<1,100<=X<500,radio/tv,1
