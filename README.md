@@ -52,37 +52,31 @@ Each training and retraining run logs parameters, metrics, curves, and model art
 
 ```mermaid
 flowchart TD
-A([Start]) --> B[Load dataset (German Credit-style)]
-B --> C[Exploratory Data Analysis (EDA)<br>(distributions, correlations, target balance)]
-C --> D[Preprocessing Pipeline (Scikit-learn)<br>- Impute missing values<br>- Scale numeric features<br>- One-Hot Encode categorical features]
-D --> E[Train XGBoost Classifier<br>(binary classification: Paid vs Not Paid)]
-E --> F[Evaluate model<br>(confusion matrix, ROC, PR curve, probability hist)]
-F --> G[Log experiment to MLflow<br>(params, metrics, artifacts, model version)]
+A[Load Dataset] --> B[EDA]
+B --> C[Preprocess Pipeline]
+C --> D[Train XGBoost]
+D --> E[Evaluate Model]
+E --> F[Log to MLflow]
 
-subgraph DEP["Deployment & Inference"]
-H[Export / Register model<br>(MLflow Model Registry)]
-I[Run FastAPI service (REST)]
-J[Web UI (credit request form)]
-K[Predict risk score<br>(probability of Paid=1)]
-H --> I --> J --> K
-end
+F --> G[Artifacts per Run]
+G --> G1[Confusion Matrix]
+G --> G2[ROC Curve + AUC]
+G --> G3[PR Curve]
+G --> G4[Probability Histogram]
+G --> G5[Metrics JSON/CSV]
 
-G --> H
+F --> H[Register Model Version]
+H --> I[FastAPI Serving]
+I --> J[UI Credit Form]
+J --> K[Predict Probability]
 
-subgraph FB["Feedback Loop (Continuous Learning)"]
-L[User registers real outcome<br>(Paid / Not Paid)]
-M[Append labeled sample to feedback store]
-N[Trigger retraining notebook]
-O[Retrain model with updated data]
-P[Re-evaluate & log to MLflow<br>(new run + artifacts)]
-Q[Promote new model version<br>(replace production model)]
-L --> M --> N --> O --> P --> Q
-end
-
-K --> L
-Q --> R([End])
-
-P -.-> S[Artifacts logged per run:<br>- Confusion matrix<br>- ROC curve (AUC)<br>- Precision-Recall curve<br>- Probability distribution<br>- Metrics JSON/CSV]
+K --> L[Collect Outcome]
+L --> M[Feedback Dataset]
+M --> N[Retrain Trigger]
+N --> O[Retrain + Re-evaluate]
+O --> P[Log New Run MLflow]
+P --> Q[Promote New Version]
+Q --> H
 ```
 
 ### Table 1 — Model Parameters
