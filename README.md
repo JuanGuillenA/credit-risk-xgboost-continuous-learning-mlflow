@@ -50,7 +50,40 @@ Each training and retraining run logs parameters, metrics, curves, and model art
 
 ### Proposed Method Diagram
 
-![Proposed Method Diagram](german-credit-continuous-training-mlflow/artifacts/figures/diagrama_ui.png)
+```mermaid
+flowchart TD
+A([Start]) --> B[Load dataset (German Credit-style)]
+B --> C[Exploratory Data Analysis (EDA)<br>(distributions, correlations, target balance)]
+C --> D[Preprocessing Pipeline (Scikit-learn)<br>- Impute missing values<br>- Scale numeric features<br>- One-Hot Encode categorical features]
+D --> E[Train XGBoost Classifier<br>(binary classification: Paid vs Not Paid)]
+E --> F[Evaluate model<br>(confusion matrix, ROC, PR curve, probability hist)]
+F --> G[Log experiment to MLflow<br>(params, metrics, artifacts, model version)]
+
+subgraph DEP["Deployment & Inference"]
+H[Export / Register model<br>(MLflow Model Registry)]
+I[Run FastAPI service (REST)]
+J[Web UI (credit request form)]
+K[Predict risk score<br>(probability of Paid=1)]
+H --> I --> J --> K
+end
+
+G --> H
+
+subgraph FB["Feedback Loop (Continuous Learning)"]
+L[User registers real outcome<br>(Paid / Not Paid)]
+M[Append labeled sample to feedback store]
+N[Trigger retraining notebook]
+O[Retrain model with updated data]
+P[Re-evaluate & log to MLflow<br>(new run + artifacts)]
+Q[Promote new model version<br>(replace production model)]
+L --> M --> N --> O --> P --> Q
+end
+
+K --> L
+Q --> R([End])
+
+P -.-> S[Artifacts logged per run:<br>- Confusion matrix<br>- ROC curve (AUC)<br>- Precision-Recall curve<br>- Probability distribution<br>- Metrics JSON/CSV]
+```
 
 ### Table 1 — Model Parameters
 
